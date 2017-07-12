@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Configuration>
+	<Appenders>
+		<RollingFile name="rollingFile" fileName="life.log"
+			filePattern="life-%d{yyyy-MM-dd}-%i.log">
+			<PatternLayout>
+				<pattern>%-5p %d [%t] %c - %m%n</pattern>
+			</PatternLayout>
+			<Policies>
+				<OnStartupTriggeringPolicy />
+			</Policies>
+			<DefaultRolloverStrategy max="4" />
+		</RollingFile>
+
+		<Console name="console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%-5p %c{1} - %m%n" />
+		</Console>
+	</Appenders>
+	<Loggers>
+		<Logger name="cz.fg" level="debug" />
+
+		<Root level="error">
+			<AppenderRef ref="rollingFile" />
+		</Root>
+	</Loggers>
+</Configuration>
